@@ -23,15 +23,8 @@ jQuery(function($) {
 
     // Cleanup function to clean unneeded classes
     var cleanup = function cleanup() {
-        if ($mainNavigationItemsList.hasClass('_open-mobile-dropdown')) {
-            $mainNavigationItemsList.removeClass('_open-mobile-dropdown');
-        }
-        if ($mainNavigationItemsList.hasClass('_open-tablet-dropdown')) {
-            $mainNavigationItemsList.removeClass('_open-tablet-dropdown');
-        }
-        if ($html.hasClass('mobile-menu-opened')) {
-            $html.removeClass('mobile-menu-opened');
-        }
+        $mainNavigationItemsList.removeClass('_open-mobile-dropdown _open-tablet-dropdown');
+        $html.removeClass('mobile-menu-opened');
 
         if (isAndroid && screen.width < 992 && !$html.hasClass('mobile-menu-opened')) {
             $('.js__navigation__items-wrp').hide();
