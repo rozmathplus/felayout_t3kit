@@ -85,9 +85,9 @@ jQuery(function($) {
         $(window).on('load scroll', function() {
             var scrollPos = $(window).scrollTop();
             if (scrollPos > offsetTop) {
-                $('body:not(.main-navigation-fixed)').addClass('main-navigation-fixed');
+                $('body').addClass('main-navigation-fixed');
             } else {
-                $('body.main-navigation-fixed').removeClass('main-navigation-fixed');
+                $('body').removeClass('main-navigation-fixed');
             }
         });
     }
