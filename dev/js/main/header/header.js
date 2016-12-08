@@ -26,9 +26,7 @@ jQuery(function($) {
         $mainNavigationItemsList.removeClass('_open-mobile-dropdown _open-tablet-dropdown');
         $html.removeClass('mobile-menu-opened');
 
-        if (isAndroid && screen.width < 992 && !$html.hasClass('mobile-menu-opened')) {
-            $('.js__navigation__items-wrp').hide();
-        } else if (!isAndroid /* or with 'isIOS' variable instead of '!isAndroid' */ && $(window).width() < 992 && !$html.hasClass('mobile-menu-opened')) {
+        if (screen.width < 992) {
             $('.js__navigation__items-wrp').hide();
         } else {
             $('.js__navigation__items-wrp').show();
