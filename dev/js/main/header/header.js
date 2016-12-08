@@ -36,7 +36,7 @@ jQuery(function($) {
     // Add click event to dropdown link on mobile devices.
     $openSubMenuLink.on('click', function(e) {
         e.preventDefault();
-        // if (touchSupport && $(window).width() > 992) {
+        
         if (window.matchMedia('(min-width: 992px)').matches) {
             $mainNavigationItemsList.not($(this).parents()).removeClass('_open-tablet-dropdown');
             $(this).parents('.main-navigation__item').toggleClass('_open-tablet-dropdown');
@@ -45,9 +45,8 @@ jQuery(function($) {
         }
     });
 
-    $(window).on('orientationchange',function() {
-        cleanup();
-    });
+    // detect if we cross 992px window width.
+    window.matchMedia('(min-width: 992px)').addListener(cleanup);
 
     var mobileMenuAnimationComplete = true;
     $('.js__main-navigation__toggle-btn').on('click', function(e) {
@@ -78,9 +77,8 @@ jQuery(function($) {
             }
         };
 
-        $(window).on('orientationchange',function() {
-            calcOffsetTop();
-        });
+        // detect if we cross 992px window width.
+        window.matchMedia('(min-width: 992px)').addListener(calcOffsetTop);
 
         $(window).on('load scroll', function() {
             var scrollPos = $(window).scrollTop();
