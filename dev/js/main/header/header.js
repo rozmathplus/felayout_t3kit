@@ -37,7 +37,7 @@ jQuery(function($) {
     $openSubMenuLink.on('click', function(e) {
         e.preventDefault();
         // if (touchSupport && $(window).width() > 992) {
-        if ($(window).width() > 992) {
+        if ($(window).width() >= 992) {
             $mainNavigationItemsList.not($(this).parents()).removeClass('_open-tablet-dropdown');
             $(this).parents('.main-navigation__item').toggleClass('_open-tablet-dropdown');
         }
@@ -71,7 +71,7 @@ jQuery(function($) {
     if (navbar.length) {
         var offsetTop = navbar.offset().top;
         $(window).on('orientationchange',function() {
-            if ($(window).width() > 992 && touchSupport) {
+            if ($(window).width() >= 992 && touchSupport) {
                 var navbarPos = navbar.css('position');
                 offsetTop = $('header').height() - (navbarPos === 'fixed' ? 0 : navbar.outerHeight());
             }
