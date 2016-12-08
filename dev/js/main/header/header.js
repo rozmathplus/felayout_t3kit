@@ -22,7 +22,7 @@ jQuery(function($) {
     }
 
     // Cleanup function to clean unneeded classes
-    var cleanup = function cleanup() {
+    var cleanup = function() {
         $mainNavigationItemsList.removeClass('_open-mobile-dropdown _open-tablet-dropdown');
         $html.removeClass('mobile-menu-opened');
 
@@ -69,12 +69,19 @@ jQuery(function($) {
 
     if (navbar.length) {
         var offsetTop = navbar.offset().top;
-        $(window).on('orientationchange',function() {
-            if (window.matchMedia('(min-width: 992px)').matches && touchSupport) {
+
+        // function that calculates offsetTop-value.
+        var calcOffsetTop = function() {
+            if (window.matchMedia('(min-width: 992px)').matches) {
                 var navbarPos = navbar.css('position');
                 offsetTop = $('header').height() - (navbarPos === 'fixed' ? 0 : navbar.outerHeight());
             }
+        };
+
+        $(window).on('orientationchange',function() {
+            calcOffsetTop();
         });
+
         $(window).on('load scroll', function() {
             var scrollPos = $(window).scrollTop();
             if (scrollPos > offsetTop) {
